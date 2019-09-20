@@ -6,8 +6,6 @@ except ImportError:
 import sys
 
 install_requires = []
-if sys.version_info < (3, 4):
-    install_requires.append('enum34')
 
 setup(
     name='bashlex',
@@ -38,5 +36,10 @@ See https://github.com/idank/bashlex/blob/master/README.md for more info.''',
         'Topic :: Text Processing',
     ],
     install_requires=install_requires,
+    extras_require={
+        ':python_version < "3.4"': [
+            'enum34==1.1.6',
+        ],
+    },
     packages=['bashlex'],
 )
